@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ws>
+    <settings>
+        <stage width="880px" height="480px" id="Stage" create="yes" center="yes" />
+        <triggers>
+            <trigger name="next_by_right" event="keyup" key="RIGHT_ARROW" special="next" />
+        </triggers>
+    </settings>
+    <assets>
+        <textbox name="tb_main" behaviour="adv" cssid="MainTb" names="yes" 
+            x="8px" y="368px" width="860px" height="100px"></textbox>
+            
+        <textbox name="tb_credits" behaviour="adv" cssid="CreditsTb" names="no" 
+            x="5px" y="5px" z="1000" width="870px" height="470px"></textbox>
+            
+        <character name="h" textbox="tb_main">
+            <displayname>Heir</displayname>
+        </character>
+        
+        <character name="n" textbox="tb_credits"></character>
+        
+        <imagepack name="img_heir" x="100px" y="-200px" z="5">
+            <image src="assets/images/heir28.jpg" name="skeptical_eo_mo" />
+            <image src="assets/images/heir29.jpg" name="neutral_eo_mo" />
+            <image src="assets/images/heir30.jpg" name="neutral_el_mo" />
+            <image src="assets/images/heir31.jpg" name="neutral_er_mo" />
+            <image src="assets/images/heir32.jpg" name="surprised_eo_mo" />
+            <image src="assets/images/heir4.jpg" name="annoyed_ec_mo" />
+        </imagepack>
+    </assets>
+    <scenes>
+        <scene id="start">
+            
+            <trigger name="next_by_right" action="activate" />
+            
+            
+            <show asset="tb_credits" effect="slide" direction="right" />
+            
+            <line s="n">
+                {img src="/images/webstory-engine-logo-medium" alt="logo" style="margin-top: -50px;" /}{br /}
+                Please click on the screen to start.{br /}
+                Inside the story, you can also press the {b}RIGHT ARROW{/b} key to go to the next line.
+            </line>
+            
+            <hide asset="tb_credits" effect="slide" direction="right" />
+            <wait />
+            
+            <set asset="img_heir" image="neutral_eo_mo" duration="0" />
+            <wait />
+            <show asset="img_heir" duration="500" effect="slide" direction="bottom" easing="easeOutBounce" />
+            <wait />
+            <set asset="img_heir" image="neutral_el_mo" duration="300" />
+            <wait />
+            <set asset="img_heir" image="neutral_er_mo" duration="300" />
+            <wait />
+            <set asset="img_heir" image="neutral_eo_mo" duration="300" />
+            <wait />
+            <show asset="tb_main" effect="slide" direction="top" />
+            
+            <line s="h">
+                Good afternoon. My assistant Lia has been blackmailing me into giving you folks
+                a quick introduction of the visual novel engine we're using: the WebStory Engine.
+            </line>
+            
+            <line s="h">
+                My name is Heir, by the way, and I'm the boss of a largely unsuccessful
+                visual novel studio.
+            </line>
+            
+            <set asset="img_heir" image="surprised_eo_mo" duration="500" />
+            
+            <line s="h">
+                What do you mean, 'funny'?
+            </line>
+            
+            <set asset="img_heir" image="annoyed_ec_mo" duration="500" />
+            
+            <line s="h">
+                It's not a joke! It's my name! My name, ok?!
+            </line>
+            
+            <set asset="img_heir" image="skeptical_eo_mo" duration="200" />
+            
+            <line s="h">
+                And I happen to like it, you know.
+            </line>
+            
+            <set asset="img_heir" image="neutral_eo_mo" duration="200" />
+            
+            <line s="h">
+                So, what's your name, huh?
+            </line>
+            
+            <prompt title="Enter your name" message="Please enter your name!" var="players_name" />
+            
+            <var name="players_name" action="print" />
+            
+            <var ifvar="players_name" ifvalue="null" name="players_name" value="[anonymous]" />
+            <var ifvar="players_name" ifvalue="" name="players_name" value="[anonymous]" />
+            
+            <var name="players_name" action="print" />
+            
+            <line s="h" ifvar="players_name" ifvalue="[anonymous]">
+                Yeah, I figured as much: too afraid to give me your name because it's just THAT ugly.
+            </line>
+            
+            <line s="h" ifvar="players_name" ifnot="[anonymous]">
+                {$players_name}? Really? Wow, that's a pretty ugly name you got there. No wonder
+                that you feel the urge to make fun of other people's names then, I suppose.
+            </line>
+            
+            <line s="h">
+                Well, names aside, let's talk about the engine.
+            </line>
+            
+            <line s="h">
+                The WebStory Engine is an engine for web-based story games, that is, visual novels.
+            </line>
+            
+            <line s="h">
+                I guess you DO at least know what a visual novel is, don't you?
+            </line>
+            
+            <choice>
+                <option label="Sure, I know what that is.">
+                    <var name="knows_visual_novels" value="true" />
+                </option>
+                <option label="Well, uh... not really.">
+                    <var name="knows_visual_novels" value="false" />
+                </option>
+            </choice>
+            
+            <sub ifvar="knows_visual_novels" ifvalue="false" scene="explain_vn" />
+            
+            <goto scene="explain_wse" />
+        </scene>
+        
+        
+        <scene id="explain_wse">
+            
+            <line s="h">
+                With that embarrassing question out of the way, let's talk about what
+                the WebStory Engine can do for you.
+            </line>
+            
+            <line s="h">
+                First of all, it is called WEBStory Engine for a reason. And that is:
+                Games made with the engine can be played on normal websites.
+            </line>
+            
+            <line s="h">
+                The player does not need to install anything on their computer.
+                That's a HUGE plus compared to traditional games, let me tell you that.
+            </line>
+            
+            <line s="h">
+                And the engine does not use any proprietary browser plugins like flash.
+                Every modern browser should be able to play games made using the engine.
+            </line>
+            
+            <line s="h">
+                Stories written with the engine are called WebStories by the way.
+                That is because they don't have to be visual novels, although making VNs
+                is the main purpose of the software.
+            </line>
+            
+            <line s="h">
+                WebStories are written in a rather easy-to-understand language.
+                You don't need to be a programmer to use it.
+            </line>
+            
+            <line s="h">
+                Although this one does not have any music, your WebStories can have that, of
+                course.
+            </line>
+            
+            <line s="h">
+                If you want to make some more sophisticated visual novels than just
+                text with some decision points, the engine lets you define variables and
+                you can do advanced branching using sub routines and 
+                (eww, gross) gotos.
+            </line>
+            
+            <line s="h">
+                You can freely define which keyboard keys a user should hit to get to the next
+                line.
+            </line>
+            
+            <line s="h">
+                The engine has a built-in savegame system that lets the player save the state of
+                the VN on any line, should you as a developer choose to enable that feature.
+            </line>
+            
+            <line s="h">
+                You can also define some simple animations using the engine.
+            </line>
+            
+            <line s="h">
+                The WebStory Engine is free open source software. That means you can use it for free,
+                redistribute it, change it and do commercial games with it. 
+            </line>
+            
+            <line s="h">
+                Heck, you could even take the whole thing, put your logo
+                on it and sell it for horrendous prices, should you suddenly feel like
+                ripping off the poor guy that developed it.
+            </line>
+            
+            <line s="h">
+                Well, as you can see, the engine has a lot to offer. There are too many features in it
+                to mention them all here. Besides, this stupid introduction took enough of my precious time already.
+            </line>
+            
+            <line s="h">
+                With that, I'm outta here, scratching my hairy butt or something. See you.
+            </line>
+            
+            <goto scene="restart" />
+        </scene>
+        
+        
+        <scene id="explain_vn">
+            
+            <set asset="img_heir" image="surprised_eo_mo" duration="300" />
+            
+            <line s="h">
+                I don't believe you. Do you live under some rock or what?
+            </line>
+            
+            <set asset="img_heir" image="neutral_eo_mo" duration="300" />
+            
+            <line s="h">
+                A visual novel is basically a story that is played on a computer
+                or other kind of electronic device that has images and sounds
+                to enrich the experience. Like what you are looking at now.
+            </line>
+            
+            <line s="h">
+                Well, calling it a story is one way to look at it. Some people
+                might argue that VNs are games and not really {em}novels{/em}.
+            </line>
+            
+            <line s="h">
+                Some visual novels even feature voices or include some mini games.
+            </line>
+            
+            <line s="h">
+                Most visual novels let the player influence the outcome of the story
+                by asking her from time to time what the protagonist should be doing next.
+            </line>
+            
+            <line s="h">
+                Visual novels are a big hit in Japan, but more and more people outside
+                of the country take an interest in visual novels.
+            </line>
+            
+            <line s="h">
+                There are both professional games being made in the genre as well as a lot
+                of indie and hobbyist works.
+            </line>
+            
+            <line s="h">
+                If you want to play some good free visual novels, google for Narcissu,
+                Katawa Shoujo, Adrift or Ripples.
+            </line>
+            
+            <line s="h">
+                Well, I guess that's enough of an explanation for now.
+            </line>
+            
+        </scene>
+        
+        
+        <scene id="restart">
+            
+            <hide asset="img_heir" effect="fade" />
+            <hide asset="tb_main" effect="fade" />
+            
+            <wait />
+            
+            <show asset="tb_credits" effect="slide" direction="right" />
+            
+            <line s="n">
+                {img src="/images/webstory-engine-logo-medium" alt="logo" /}
+            </line>
+            
+            <hide asset="tb_credits" effect="slide" direction="right" />
+            <wait />
+            <show asset="tb_credits" effect="slide" direction="right" />
+            
+            <line s="n">
+                {b}Offensive Plot &amp; Programming:{/b}{br /}
+                C7N
+            </line>
+            
+            <hide asset="tb_credits" effect="slide" direction="right" />
+            <wait />
+            <show asset="tb_credits" effect="slide" direction="right" />
+            
+            <line s="n">
+                {b}Awesome Character Art:{/b}{br /}
+                {a onclick="window.open(this.href); return false;" href="http://anemontaglub.deviantart.com/"}anemonta{/a}
+            </line>
+            
+            <hide asset="tb_credits" effect="slide" direction="right" />
+            <wait />
+            <show asset="tb_credits" effect="slide" direction="bottom" easing="easeOutBounce" />
+            
+            <line s="n">
+                The images used in this game are copyrighted, please don't steal them. Thank you.
+            </line>
+            
+            <hide asset="tb_credits" effect="slide" direction="bottom" />
+            
+            <trigger name="next_by_right" action="deactivate" />
+            <trigger name="next_by_space" action="deactivate" />
+            <wait />
+            <restart />
+        </scene>
+    </scenes>
+</ws>

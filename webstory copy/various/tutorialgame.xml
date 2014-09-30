@@ -1,0 +1,184 @@
+    <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+    <ws>
+        <settings>
+        <stage width="1200px" height="900px" create="yes" center="yes" resize="no" />
+        <triggers>
+            <trigger name="game_menu_key_trigger" event="keyup" key="ESCAPE" function="savegames" />
+            <trigger name="next_on_right" event="keyup" key="RIGHT_ARROW" special="next" />
+            <trigger name="next_on_space" event="keyup" key="SPACE" special="next" />
+            <trigger name="sub_scene_by_key" event="keyup" key="UP_ARROW" sub="custom_event_scene" />
+        </triggers>
+        <setting name="host.stage.resize" value="true" />
+        <setting name="host.inspector.enable" value="true" />
+        </settings>
+        <assets>
+            <!-- Images, sounds, characters and textboxes used -->
+            <textbox name="tb_main" x="5px" y="655px" width="890px" height="100px"></textbox>
+            <textbox name="tb_top" x="0" y="0" z="30000" width="100%" height="100%" cssid="bla"></textbox>
+            <rectangle name="rect" x="20px" y="20px" height="50px" width="100px" color="green" />
+            <imagepack name="backgrounds" x="0" y="0" z="0">
+                <image src="assets/images/daytime_clouds_A_01.jpg" name="clouds01" />
+                <image src="assets/images/Evening_clouds_C_01.jpg" name="clouds02" />
+            </imagepack>
+            <imagepack name="backgrounds2" x="0" y="0" z="0">
+                <image src="assets/images/Rainbow_A_01.jpg" name="rainbow" />
+            </imagepack>
+            <imagepack name="tourist" x="410px" y="150px" z="20">
+                <image src="assets/images/tourist_angry.png" name="angry" />
+                <image src="assets/images/tourist_calm.png" name="calm" />
+                <image src="assets/images/tourist_happy.png" name="happy" />
+                <image src="assets/images/tourist_shocked.png" name="shocked" />
+                <image src="assets/images/tourist_sunglasses.png" name="sunglasses" />
+            </imagepack>
+            <imagepack name="background">
+                <image src="assets/images/sky.jpg" name="sky" />
+            </imagepack>
+            <character name="f" textbox="tb_main">
+                <displayname>Fisher</displayname>
+            </character>
+            <character name="t" textbox="tb_main">
+                <displayname>Tourist</displayname>
+            </character>
+            <character name="n" textbox="tb_main"></character>
+        
+            <textbox name="tb_main" width="890px" height="100px" x="5px" y="355px" namebox="yes" speed="50">
+                <nameTemplate>{name}</nameTemplate>
+            </textbox>
+        </assets>
+        <scenes>
+            <!-- Scenes which contain the story itself -->
+                    <scene id="start">
+            
+            <set asset="background" image="sky" />
+            <show asset="background" />
+            
+            <show asset="tb_main" />
+            
+            <line s="n">
+                Such a nice day...
+            </line>
+            
+            <line s="n">
+                The sun seemed to be smiling as it's rays gently warmed my body.
+            </line>
+            
+            <line s="n">
+                Lying on my back on the peer, I was looking up at
+                a beautiful sky.
+            </line>
+            
+            <line s="n">
+                The sounds of seagulls. Waves crashing against my trusty old boat.
+            </line>
+            
+            <line s="n">
+                I caught a lot of fish today. Enough for maybe two days.
+            </line>
+            
+            <line s="n">
+                Having done all the work for the day, I could just relax the rest of it.
+                Could life be any more fulfilling than that?
+            </line>
+            
+            <hide asset="background" />
+            
+            <line s="n">
+                I took a deep breath and closed my eyes.
+            </line>
+            
+            <line s="n">
+                *Click!*
+            </line>
+            
+            <line s="n">
+                Huh?
+            </line>
+            
+            <line s="n">
+                *Click!* *Click!*
+            </line>
+            
+            <line s="n">
+                What the... what is this sound?
+            </line>
+            
+            <line s="n">
+                *Click!*
+            </line>
+            
+            <show asset="background" />
+            
+            <line s="n">
+                Annoyed I opened my eyes.
+            </line>
+            
+            <line s="n">
+                It seemed one of those damn rich tourists was taking photographs of god knows what.
+            </line>
+            
+            <line s="n">
+                Stuff that obviously only tourists would be interested in. Stones lying around and crap
+                like that.
+            </line>
+            
+            <line s="n">
+                Although he wore typical tourist clothes, I'd bet my ass that he was some kind of businessman
+                in his day-to-day life.
+            </line>
+            
+            <line s="n">
+                I could totally imagine him wearing an expensive black suit and one of those
+                slave leashes around his neck, which city people seem to be so fond of.
+            </line>
+            
+            <line s="n">
+                After taking a photo of my boat, he finally noticed me and waved.
+            </line>
+            
+            <line s="n">
+                I turned my head and ignored him. He didn't get the message, obviously, as he approached me further.
+            </line>
+            
+            <set asset="tourist" image="sunglasses" duration="0" />
+            <show asset="tourist" />
+            
+            <line s="t">
+                Hello there! I didn't notice you at all before. Did I wake you? Well, sorry about that,
+                hahaha!
+            </line>
+            
+            <set asset="tourist" image="happy" />
+            
+            <line s="n">
+                He took off his sunglasses. I could tell that he was much younger than me. 15, maybe 20 years.
+            </line>
+            
+            <line s="f">
+                ...
+            </line>
+            
+            <line s="t">
+                So.. what are you doing here in the middle of the day?
+            </line>
+            
+            <line s="f">
+                ...
+            </line>
+            
+            <line s="t">
+                Not working? Why not? Are you sick?
+            </line>
+            
+            <line s="n">
+                That annoying little pest just didn't stop bugging me. So I thought it would
+                be a good idea to...
+            </line>
+            
+            <choice>
+                <option label="... get angry at him." scene="angry"></option>
+                <option label="... answer him." scene="answer"></option>
+            </choice>
+        </scene>
+        </scenes>
+    </ws>
+

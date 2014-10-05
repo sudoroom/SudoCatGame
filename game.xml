@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<ws>
+    <settings>
+        <stage width="1200px" height="520px" create="yes" center="yes" resize="yes" />
+        <triggers>
+            <trigger name="next_by_right" event="keyup" key="RIGHT_ARROW" special="next" />
+        </triggers>
+    </settings>
+    <assets>
+        <imagepack name="background">
+            <image src="assets/images/background/temescal.png" name="temescal" />
+        </imagepack>
+        <curtain name="curtain" color="white" z="0" />
+        <character name="sc" textbox="tb_main">
+            <displayname>SudoCat</displayname>
+        </character>
+        
+        <character name="ck" textbox="tb_main">
+            <displayname>Crate Kitty</displayname>
+        </character>
+        <character name="m" textbox="tb_main">
+            <displayname>Mike</displayname>
+        </character>     
+
+        <character name="n" textbox="tb_main"></character>
+ 
+        <textbox name="tb_main" width="890px" height="100px" x="5px" y="405px" namebox="yes" speed="50">
+            <nameTemplate>{name}</nameTemplate>
+        </textbox>
+        
+    </assets>
+    <scenes>
+        <scene id="start">
+            <set asset="background" image="temescal" />
+            <show asset="background" />
+            
+            <show asset="tb_main" />
+            
+            <line s="n">
+                SudoGame
+            </line>
+        </scene>
+    </scenes>
+</ws>

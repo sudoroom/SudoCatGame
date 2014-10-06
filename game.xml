@@ -57,12 +57,7 @@
             <line s="sc">
                 Ah! SudoRoom... where to begin? 
             </line>
-            
-            
-            
-            <show asset="background" />
-            
-          
+
             <restart />
         </scene>  
     </scenes>

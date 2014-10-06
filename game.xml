@@ -17,8 +17,10 @@
         
         <imagepack name="background">
             <image src="assets/images/background/bg_sudoKitchen.png" name="bg_sudoKitchen" />
+             <!-- 
             <image src="assets/images/background/bg_sudoMate.png" name="bg_sudoMate" />
             <image src="assets/images/background/bg_sewing.png" name="bg_sewing" />
+        -->
         </imagepack>
 
         <character name="sc" textbox="tb_main">

@@ -9,8 +9,10 @@
     <assets>
         <imagepack name="sudocat" x="410px" y="150px" z="20">
             <image src="assets/images/characters/sudocat/sudocat-eyesclosed-normal.png" name="normal-eyesclosed" />
+         <!-- 
             <image src="assets/images/characters/sudocat/sudocat-normal.png" name="normal" />
             <image src="assets/images/characters/sudocat/sudocat-normal-tiltright.png" name="normal-tilt-right" />
+        -->
         </imagepack>
         
         <imagepack name="background">

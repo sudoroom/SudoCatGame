@@ -52,7 +52,7 @@
             
             <show asset="tb_main" />
             
-            <set asset="SudoCat" image="normal" duration="0" />
+            <set asset="SudoCat" image="normal" duration="1000" />
             <show asset="SudoCat" />
 
             <line s="sc">

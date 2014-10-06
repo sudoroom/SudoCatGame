@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <ws>
     <settings>
-         <stage width="1200px" height="520px" create="yes" center="yes" resize="yes" />
+        <stage width="900px" height="460px" create="yes" center="yes" />
         <triggers>
             <trigger name="next_by_right" event="keyup" key="RIGHT_ARROW" special="next" />
         </triggers>
@@ -45,7 +45,7 @@
         
         <scene id="start">
             
-            <set asset="background" image="bg_sewing" />
+            <set asset="background" image="sky" />
             <show asset="background" />
             
             <show asset="tb_main" />
